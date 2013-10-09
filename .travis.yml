@@ -1,0 +1,3 @@
+language: objective-c
+
+script: xctool -project UIAlertView+Block.xcodeproj -scheme "UIAlertView+Block" build test -sdk iphonesimulator -arch i386
