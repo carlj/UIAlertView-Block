@@ -52,7 +52,7 @@
   alertView.clickedButtonBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
   };
   
-  _XCTPrimitiveAssertEqualObjects(alertView, alertView.delegate, @"Delegate arent the same");
+  XCTAssertEqualObjects(alertView, alertView.delegate, @"Delegate arent the same");
 }
 
 - (void)testIfClickBlockGetsCalled {
@@ -72,7 +72,7 @@
   [self waitForAnimationFinished];
   
 
-  _XCTPrimitiveAssertFalse(blockExecuted, @"click block dont called");
+  XCTAssertFalse(blockExecuted, @"click block dont called");
 }
 
 - (void)testIfDeverseBlocksGetsCalled {
@@ -96,7 +96,7 @@
   [self waitForAnimationFinished];
   
   
-  _XCTPrimitiveAssertTrue(blockCounter == 2, @"dont called all blocks");
+  XCTAssertTrue(blockCounter == 2, @"dont called all blocks");
 }
 
 @end
