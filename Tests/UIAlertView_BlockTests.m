@@ -23,11 +23,6 @@
   self.semaphore = dispatch_semaphore_create(0);
 }
 
-- (void)tearDown {
-  // Put teardown code here. This method is called after the invocation of each test method in the class.
-  [super tearDown];
-}
-
 - (void)waitForAnimationFinished {
   
   double delayInSeconds = 1.0;
@@ -60,9 +55,8 @@
   _XCTPrimitiveAssertEqualObjects(alertView, alertView.delegate, @"Delegate arent the same");
 }
 
-- (void)testIfClickBlockGetCalles {
+- (void)testIfClickBlockGetsCalled {
   
-
   UIAlertView *alertView = [self generateDefaultAlertViewForTests];
   
   __block BOOL blockExecuted = NO;
@@ -79,6 +73,30 @@
   
 
   _XCTPrimitiveAssertFalse(blockExecuted, @"click block dont called");
+}
+
+- (void)testIfDeverseBlocksGetsCalled {
+  
+  UIAlertView *alertView = [self generateDefaultAlertViewForTests];
+  
+  __block NSInteger blockCounter = 0;
+  alertView.clickedButtonBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+    blockCounter = 1;
+  };
+  
+  alertView.willDismissBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+    blockCounter = 2;
+  };
+  
+  [alertView show];
+  [self waitForAnimationFinished];
+  
+  
+  [alertView dismissWithClickedButtonIndex: 0 animated: YES];
+  [self waitForAnimationFinished];
+  
+  
+  _XCTPrimitiveAssertTrue(blockCounter == 2, @"dont called all blocks");
 }
 
 @end
