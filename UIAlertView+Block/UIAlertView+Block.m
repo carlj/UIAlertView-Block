@@ -91,37 +91,37 @@ static void *AlertShouldEnableFirstButtonBlockKey = &AlertShouldEnableFirstButto
 #pragma mark Custom Getter Methods
 - (AlertViewClickBlock)clickedButtonBlock {
   
-  return objc_getAssociatedObject(self, AlertClickedBlockKey);
+  return objc_getAssociatedObject(self, &AlertClickedBlockKey);
 }
 
 - (AlertViewClickBlock)willDismissBlock {
   
-  return objc_getAssociatedObject(self, AlertWillDismissBlockKey);
+  return objc_getAssociatedObject(self, &AlertWillDismissBlockKey);
 }
 
 - (AlertViewClickBlock)didDismissBlock {
   
-  return objc_getAssociatedObject(self, AlertDidDismissBlockKey);
+  return objc_getAssociatedObject(self, &AlertDidDismissBlockKey);
 }
 
 - (AlertViewBlock)cancelBlock {
   
-  return objc_getAssociatedObject(self, AlertCancelBlockKey);
+  return objc_getAssociatedObject(self, &AlertCancelBlockKey);
 }
 
 - (AlertViewBlock)willPresentBlock {
   
-  return objc_getAssociatedObject(self, AlertWillPresentBlockKey);
+  return objc_getAssociatedObject(self, &AlertWillPresentBlockKey);
 }
 
 - (AlertViewBlock)didPresentBlock {
   
-  return objc_getAssociatedObject(self, AlertDidPresentBlockKey);
+  return objc_getAssociatedObject(self, &AlertDidPresentBlockKey);
 }
 
 - (AlertViewBoolBlock)shouldEnableFirstButtonBlock {
   
-  return objc_getAssociatedObject(self, AlertShouldEnableFirstButtonBlockKey);
+  return objc_getAssociatedObject(self, &AlertShouldEnableFirstButtonBlockKey);
 }
 
 #pragma mark -
